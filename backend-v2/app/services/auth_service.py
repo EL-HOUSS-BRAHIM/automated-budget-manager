@@ -18,7 +18,7 @@ def register_user(data):
     return {'success': True, 'message': 'User registered successfully'}
 
 def login_user(data):
-    username = data.get('username')
+    username = data.get('name')
     password = data.get('password')
 
     user = User.query.filter_by(username=username).first()
