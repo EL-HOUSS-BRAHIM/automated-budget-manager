@@ -7,13 +7,13 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { signup } = useAuth();
+  const { signupUser } = useAuth();  // Change this line
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signup(name, email, password);
+      await signupUser(name, email, password);  // Change this line
       navigate('/');
     } catch (error) {
       console.error('Signup failed:', error);
