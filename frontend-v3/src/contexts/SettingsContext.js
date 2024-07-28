@@ -4,7 +4,7 @@ export const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
-  const [notifications, setNotifications] = useState(true);
+  const [notifications, setNotifications] = useState({ email: true, push: true });
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -23,7 +23,7 @@ export const SettingsProvider = ({ children }) => {
   };
 
   return (
-    <SettingsContext.Provider value={{ theme, updateTheme, notifications, toggleNotifications }}>
+    <SettingsContext.Provider value={{ theme, updateTheme, notifications, updateNotifications }}>
       {children}
     </SettingsContext.Provider>
   );
