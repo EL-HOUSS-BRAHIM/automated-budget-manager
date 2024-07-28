@@ -6,13 +6,13 @@ import './Auth.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuth();
+  const { loginUser } = useAuth();  // Change this line
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
+      await loginUser(email, password);  // Change this line
       navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
