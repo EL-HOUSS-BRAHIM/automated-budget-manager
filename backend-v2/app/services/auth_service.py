@@ -2,7 +2,7 @@ from ..models import User
 from .. import db, bcrypt
 
 def register_user(data):
-    username = data.get('username')
+    username = data.get('name')
     email = data.get('email')
     password = data.get('password')
 
