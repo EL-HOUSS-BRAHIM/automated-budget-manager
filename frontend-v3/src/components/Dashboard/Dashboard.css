@@ -1,0 +1,30 @@
+.dashboard-container {
+    padding: 20px;
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .expense-tracker, .budget-tracker, .goal-tracker, .reports {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .budget-progress, .goal-progress {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    height: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  
+  .budget-bar, .goal-bar {
+    background-color: #007bff;
+    height: 100%;
+    transition: width 0.3s ease;
+  }

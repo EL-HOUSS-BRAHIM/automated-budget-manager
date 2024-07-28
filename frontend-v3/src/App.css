@@ -1,38 +1,41 @@
 .App {
-  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chart {
+  margin-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.chart-bar {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.chart-bar .category {
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chart-bar .bar {
+  height: 20px;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+.chart-bar .amount {
+  margin-left: 10px;
+}
+
+.income-vs-expense .bar.income {
+  background-color: #28a745;
+}
+
+.income-vs-expense .bar.expense {
+  background-color: #dc3545;
 }
