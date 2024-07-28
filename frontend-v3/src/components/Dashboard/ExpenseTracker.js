@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getExpenses } from '../../services/expenseService';
 
-function ExpenseTracker() {
+const ExpenseTracker = () => {
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
+    const fetchExpenses = async () => {
+      try {
+        const data = await getExpenses();
+        setExpenses(data.expenses);
+      } catch (error) {
+        console.error('Failed to fetch expenses:', error);
+      }
+    };
+
     fetchExpenses();
   }, []);
-
-  const fetchExpenses = async () => {
-    try {
-      const data = await getExpenses();
-      setExpenses(data.expenses);
-    } catch (error) {
-      console.error('Failed to fetch expenses:', error);
-    }
-  };
 
   return (
     <div className="expense-tracker">
@@ -23,12 +23,12 @@ function ExpenseTracker() {
       <ul>
         {expenses.map((expense) => (
           <li key={expense.id}>
-            {expense.description}: ${expense.amount} on {expense.date}
+            {expense.description}: ${expense.amount} ({expense.date})
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 export default ExpenseTracker;

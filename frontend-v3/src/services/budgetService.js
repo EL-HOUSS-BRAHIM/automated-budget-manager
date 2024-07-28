@@ -1,9 +1,9 @@
 import { apiRequest } from '../utils/apiUtils';
 
 export const getBudget = async () => {
-  return apiRequest('/api/budget');
+  return await apiRequest('/api/budget', 'GET');
 };
 
-export const updateBudget = async (budgetData) => {
-  return apiRequest('/api/budget', 'PUT', budgetData);
+export const updateBudget = async (budget) => {
+  return await apiRequest('/api/budget', 'PUT', budget);
 };

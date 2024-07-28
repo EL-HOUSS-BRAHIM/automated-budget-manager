@@ -5,9 +5,9 @@ import GoalTracker from './GoalTracker';
 import Reports from './Reports';
 import './Dashboard.css';
 
-function Dashboard() {
+const Dashboard = () => {
   return (
-    <div className="dashboard-container">
+    <div className="dashboard">
       <h1>Dashboard</h1>
       <div className="dashboard-grid">
         <ExpenseTracker />
@@ -17,6 +17,6 @@ function Dashboard() {
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

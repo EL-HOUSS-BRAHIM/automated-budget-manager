@@ -1,23 +1,25 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
-export const apiRequest = async (endpoint, method = 'GET', body = null) => {
-  const token = localStorage.getItem('token');
-  const headers = {
-    'Content-Type': 'application/json',
-    ...(token && { Authorization: `Bearer ${token}` }),
-  };
-
-  const config = {
+export const apiRequest = async (endpoint, method = 'GET', data = null) => {
+  const url = `${API_BASE_URL}${endpoint}`;
+  const options = {
     method,
-    headers,
-    ...(body && { body: JSON.stringify(body) }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    },
   };
 
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
-  
-  if (!response.ok) {
-    throw new Error('API request failed');
+  if (data) {
+    options.body = JSON.stringify(data);
   }
 
-  return response.json();
+  const response = await fetch(url, options);
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || 'An error occurred');
+  }
+
+  return await response.json();
 };

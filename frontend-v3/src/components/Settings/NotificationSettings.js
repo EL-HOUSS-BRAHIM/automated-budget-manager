@@ -1,41 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSettings } from '../../hooks/useSettings';
 
-function NotificationSettings() {
-  const { notifications, updateNotifications } = useSettings();
-  const [emailNotifications, setEmailNotifications] = useState(notifications.email);
-  const [pushNotifications, setPushNotifications] = useState(notifications.push);
+const NotificationSettings = () => {
+  const { settings, updateSettings } = useSettings();
 
-  const handleSave = () => {
-    updateNotifications({ email: emailNotifications, push: pushNotifications });
+  const handleNotificationChange = (e) => {
+    updateSettings({ notifications: e.target.checked });
   };
 
   return (
     <div className="notification-settings">
       <h3>Notification Settings</h3>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={emailNotifications}
-            onChange={(e) => setEmailNotifications(e.target.checked)}
-          />
-          Email Notifications
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={pushNotifications}
-            onChange={(e) => setPushNotifications(e.target.checked)}
-          />
-          Push Notifications
-        </label>
-      </div>
-      <button onClick={handleSave}>Save Changes</button>
+      <label>
+        <input
+          type="checkbox"
+          checked={settings.notifications}
+          onChange={handleNotificationChange}
+        />
+        Enable notifications
+      </label>
     </div>
   );
-}
+};
 
 export default NotificationSettings;

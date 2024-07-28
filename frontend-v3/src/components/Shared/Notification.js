@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Shared.css';
 
-function Notification({ message, type = 'info', duration = 3000 }) {
+const Notification = ({ message, type = 'info', duration = 3000 }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -19,6 +19,6 @@ function Notification({ message, type = 'info', duration = 3000 }) {
       {message}
     </div>
   );
-}
+};
 
 export default Notification;

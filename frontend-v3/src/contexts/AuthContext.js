@@ -5,39 +5,37 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      // Validate token and set user
-      setIsAuthenticated(true);
+    // Check if user is logged in (e.g., by checking local storage)
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
+    setLoading(false);
   }, []);
 
   const loginUser = async (email, password) => {
-    const response = await login(email, password);
-    setUser(response.user);
-    setIsAuthenticated(true);
-    localStorage.setItem('token', response.token);
+    const userData = await login(email, password);
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
   const signupUser = async (name, email, password) => {
-    const response = await signup(name, email, password);
-    setUser(response.user);
-    setIsAuthenticated(true);
-    localStorage.setItem('token', response.token);
+    const userData = await signup(name, email, password);
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
-  const logoutUser = () => {
-    logout();
+  const logoutUser = async () => {
+    await logout();
     setUser(null);
-    setIsAuthenticated(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login: loginUser, signup: signupUser, logout: logoutUser }}>
+    <AuthContext.Provider value={{ user, loginUser, signupUser, logoutUser, loading }}>
       {children}
     </AuthContext.Provider>
   );

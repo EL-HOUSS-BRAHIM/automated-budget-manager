@@ -4,15 +4,15 @@ import NotificationSettings from './NotificationSettings';
 import PrivacySettings from './PrivacySettings';
 import './Settings.css';
 
-function Settings() {
+const Settings = () => {
   return (
-    <div className="settings-container">
+    <div className="settings">
       <h2>Settings</h2>
       <ThemeSettings />
       <NotificationSettings />
       <PrivacySettings />
     </div>
   );
-}
+};
 
 export default Settings;

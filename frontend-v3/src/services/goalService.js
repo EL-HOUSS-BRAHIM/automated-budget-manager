@@ -1,17 +1,17 @@
 import { apiRequest } from '../utils/apiUtils';
 
 export const getGoals = async () => {
-  return apiRequest('/api/goals');
+  return await apiRequest('/api/goals', 'GET');
 };
 
-export const createGoal = async (goalData) => {
-  return apiRequest('/api/goals', 'POST', goalData);
+export const addGoal = async (goal) => {
+  return await apiRequest('/api/goals', 'POST', goal);
 };
 
-export const updateGoal = async (goalId, goalData) => {
-  return apiRequest(`/api/goals/${goalId}`, 'PUT', goalData);
+export const updateGoal = async (id, goal) => {
+  return await apiRequest(`/api/goals/${id}`, 'PUT', goal);
 };
 
-export const deleteGoal = async (goalId) => {
-  return apiRequest(`/api/goals/${goalId}`, 'DELETE');
+export const deleteGoal = async (id) => {
+  return await apiRequest(`/api/goals/${id}`, 'DELETE');
 };

@@ -1,30 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSettings } from '../../hooks/useSettings';
 
-function PrivacySettings() {
-  const { privacy, updatePrivacy } = useSettings();
-  const [dataSharing, setDataSharing] = useState(privacy.dataSharing);
+const PrivacySettings = () => {
+  const { settings, updateSettings } = useSettings();
 
-  const handleSave = () => {
-    updatePrivacy({ dataSharing });
+  const handlePrivacyChange = (e) => {
+    updateSettings({ privacyMode: e.target.checked });
   };
 
   return (
     <div className="privacy-settings">
       <h3>Privacy Settings</h3>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={dataSharing}
-            onChange={(e) => setDataSharing(e.target.checked)}
-          />
-          Allow anonymous data sharing for service improvement
-        </label>
-      </div>
-      <button onClick={handleSave}>Save Changes</button>
+      <label>
+        <input
+          type="checkbox"
+          checked={settings.privacyMode}
+          onChange={handlePrivacyChange}
+        />
+        Enable privacy mode
+      </label>
     </div>
   );
-}
+};
 
 export default PrivacySettings;

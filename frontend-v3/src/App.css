@@ -1,41 +1,10 @@
 .App {
-  font-family: Arial, sans-serif;
-  color: #333;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.chart {
-  margin-top: 20px;
-}
-
-.chart-bar {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.chart-bar .category {
-  width: 100px;
-  text-align: right;
-  margin-right: 10px;
-}
-
-.chart-bar .bar {
-  height: 20px;
-  background-color: #007bff;
-  transition: width 0.3s ease;
-}
-
-.chart-bar .amount {
-  margin-left: 10px;
-}
-
-.income-vs-expense .bar.income {
-  background-color: #28a745;
-}
-
-.income-vs-expense .bar.expense {
-  background-color: #dc3545;
+main {
+  flex: 1;
+  padding: 20px;
 }

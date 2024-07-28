@@ -1,9 +1,9 @@
 import { apiRequest } from '../utils/apiUtils';
 
 export const getReports = async () => {
-  return apiRequest('/api/reports');
+  return await apiRequest('/api/reports', 'GET');
 };
 
-export const generateReport = async (reportType, startDate, endDate) => {
-  return apiRequest('/api/reports/generate', 'POST', { reportType, startDate, endDate });
+export const generateReport = async (reportType) => {
+  return await apiRequest('/api/reports/generate', 'POST', { type: reportType });
 };

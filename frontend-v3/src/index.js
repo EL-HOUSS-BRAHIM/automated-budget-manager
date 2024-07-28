@@ -2,19 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { AuthProvider } from './contexts/AuthContext';
-import { BudgetProvider } from './contexts/BudgetContext';
-import { SettingsProvider } from './contexts/SettingsContext';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <BudgetProvider>
-        <SettingsProvider>
-          <App />
-        </SettingsProvider>
-      </BudgetProvider>
-    </AuthProvider>
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

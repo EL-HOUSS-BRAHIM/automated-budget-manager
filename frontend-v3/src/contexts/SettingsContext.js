@@ -1,29 +1,42 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { getSettings, updateSettings as updateSettingsService } from '../services/settingsService';
 
 export const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
-  const [notifications, setNotifications] = useState({ email: true, push: true });
+  const [settings, setSettings] = useState({
+    theme: 'light',
+    notifications: true,
+    privacyMode: false,
+  });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
+    const fetchSettings = async () => {
+      try {
+        const settingsData = await getSettings();
+        setSettings(settingsData);
+      } catch (error) {
+        console.error('Failed to fetch settings:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSettings();
   }, []);
 
-  const updateTheme = (newTheme) => {
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
-
-  const toggleNotifications = () => {
-    setNotifications(!notifications);
+  const updateSettings = async (newSettings) => {
+    try {
+      const updatedSettings = await updateSettingsService(newSettings);
+      setSettings(updatedSettings);
+    } catch (error) {
+      console.error('Failed to update settings:', error);
+    }
   };
 
   return (
-    <SettingsContext.Provider value={{ theme, updateTheme, notifications, updateNotifications }}>
+    <SettingsContext.Provider value={{ settings, updateSettings, loading }}>
       {children}
     </SettingsContext.Provider>
   );
