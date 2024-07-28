@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://67.207.94.155:5000/';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://67.207.94.155:5000';
 
 export const apiRequest = async (endpoint, method = 'GET', data = null) => {
   const url = `${API_BASE_URL}${endpoint}`;
