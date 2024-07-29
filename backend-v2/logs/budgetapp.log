@@ -7,3 +7,25 @@
 2024-07-27 19:43:32,838 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
 2024-07-27 19:46:15,893 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
 2024-07-27 19:46:16,798 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
+2024-07-28 19:42:36,830 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
+2024-07-28 19:42:37,889 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
+2024-07-28 20:12:15,569 ERROR: Unhandled Exception: (pymysql.err.IntegrityError) (1048, "Column 'username' cannot be null")
+[SQL: INSERT INTO user (username, email, password_hash, created_at) VALUES (%(username)s, %(email)s, %(password_hash)s, %(created_at)s)]
+[parameters: {'username': None, 'email': 'bross.or.of1@gmail.com', 'password_hash': '$2b$12$oH4DZi9AnZcvEk1aF4Tzd.Ll9LbowRyKXGWRW0YX6ub9pveFW45va', 'created_at': datetime.datetime(2024, 7, 28, 20, 12, 15, 341361)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) [in /root/automated-budget-manager/backend-v2/app/__init__.py:63]
+2024-07-28 20:13:28,158 ERROR: Unhandled Exception: (pymysql.err.IntegrityError) (1048, "Column 'username' cannot be null")
+[SQL: INSERT INTO user (username, email, password_hash, created_at) VALUES (%(username)s, %(email)s, %(password_hash)s, %(created_at)s)]
+[parameters: {'username': None, 'email': 'bross.or.of1@gmail.com', 'password_hash': '$2b$12$pO.KWAteE72.Zbt5g/K4yOJgM2N2YLHpGHHgKBZ4bI2Bo/CAupfjG', 'created_at': datetime.datetime(2024, 7, 28, 20, 13, 27, 930027)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) [in /root/automated-budget-manager/backend-v2/app/__init__.py:63]
+2024-07-28 20:15:45,180 ERROR: Unhandled Exception: (pymysql.err.IntegrityError) (1048, "Column 'username' cannot be null")
+[SQL: INSERT INTO user (username, email, password_hash, created_at) VALUES (%(username)s, %(email)s, %(password_hash)s, %(created_at)s)]
+[parameters: {'username': None, 'email': 'bross.or.of1@gmail.com', 'password_hash': '$2b$12$P6VgU0aR.xFgc0IFqiTfdOa.D5Kg8gL979ccqBh9M59iGhbVnU/mS', 'created_at': datetime.datetime(2024, 7, 28, 20, 15, 44, 952709)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) [in /root/automated-budget-manager/backend-v2/app/__init__.py:63]
+2024-07-28 20:16:05,943 ERROR: Unhandled Exception: (pymysql.err.IntegrityError) (1048, "Column 'username' cannot be null")
+[SQL: INSERT INTO user (username, email, password_hash, created_at) VALUES (%(username)s, %(email)s, %(password_hash)s, %(created_at)s)]
+[parameters: {'username': None, 'email': 'bross.or.of1@gmail.com', 'password_hash': '$2b$12$KFQ1g0RCJccclo6b6su.FeOoMOtCJRYhzj9odeKX4vGEUYQlv5WHu', 'created_at': datetime.datetime(2024, 7, 28, 20, 16, 5, 715727)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) [in /root/automated-budget-manager/backend-v2/app/__init__.py:63]
+2024-07-28 20:18:45,414 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
+2024-07-28 20:18:46,416 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
+2024-07-28 20:20:44,477 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
+2024-07-28 20:20:45,349 INFO: Budget app startup [in /root/automated-budget-manager/backend-v2/app/__init__.py:48]
