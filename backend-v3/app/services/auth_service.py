@@ -5,11 +5,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from datetime import datetime, timedelta
 
-def authenticate_user(email, password):
-    user = User.query.filter_by(email=email).first()
+def authenticate_user(data):
+    username = data.get('name')
+    password = data.get('password')
+    user = User.query.filter_by(username=username).first()
     if user and user.check_password(password):
         return user
     return None
+
 
 def create_user(name, email, password):
     existing_user = User.query.filter_by(email=email).first()
