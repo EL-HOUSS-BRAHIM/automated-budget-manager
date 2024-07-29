@@ -1,16 +1,19 @@
 from ..models import User
 from .. import db
 
-class SettingsService:
-    def get_user_settings(self, user_id):
-        user = User.query.get(user_id)
-        return user.settings if user else None
+def get_user_settings(user_id):
+    user = User.query.get(user_id)
+    if user:
+        # Placeholder for actual settings
+        return {'theme': 'light', 'notifications': True, 'privacy': {}}
+    return None
 
-    def update_settings(self, user_id, settings_data):
-        user = User.query.get(user_id)
-        if user:
-            if not user.settings:
-                user.settings = {}
-            user.settings.update(settings_data)
-            db.session.commit()
-        return user.settings if user else None
+def update_settings(user_id, theme, notifications, privacy):
+    user = User.query.get(user_id)
+    if user:
+        # Update settings logic (placeholder)
+        updated_settings = {'theme': theme, 'notifications': notifications, 'privacy': privacy}
+        # Save settings to user model or separate settings model
+        db.session.commit()
+        return updated_settings
+    return None

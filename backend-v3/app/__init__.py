@@ -1,30 +1,27 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from .config import Config
 
 db = SQLAlchemy()
-bcrypt = Bcrypt()
 jwt = JWTManager()
 
-def create_app(config_class=Config):
+def create_app():
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    app.config.from_object(Config)
 
     db.init_app(app)
-    bcrypt.init_app(app)
     jwt.init_app(app)
 
-    from .routes import auth_routes, expense_routes, budget_routes, goal_routes, report_routes, profile_routes, settings_routes, investment_routes, networth_routes
-    app.register_blueprint(auth_routes.bp)
-    app.register_blueprint(expense_routes.bp)
-    app.register_blueprint(budget_routes.bp)
-    app.register_blueprint(goal_routes.bp)
-    app.register_blueprint(report_routes.bp)
-    app.register_blueprint(profile_routes.bp)
-    app.register_blueprint(settings_routes.bp)
-    app.register_blueprint(investment_routes.bp)
-    app.register_blueprint(networth_routes.bp)
+    from .routes import auth, expenses, budget, goals, reports, profile, settings, investments, networth
+    app.register_blueprint(auth.bp)
+    app.register_blueprint(expenses.bp)
+    app.register_blueprint(budget.bp)
+    app.register_blueprint(goals.bp)
+    app.register_blueprint(reports.bp)
+    app.register_blueprint(profile.bp)
+    app.register_blueprint(settings.bp)
+    app.register_blueprint(investments.bp)
+    app.register_blueprint(networth.bp)
 
     return app
