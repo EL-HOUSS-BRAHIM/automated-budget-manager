@@ -1,0 +1,25 @@
+/* src/pages/DashboardPage.css */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+  
+  .dashboard-summary div {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+  }
+  
+  .dashboard-summary div h3 {
+    margin-bottom: 0.5em;
+  }
+  

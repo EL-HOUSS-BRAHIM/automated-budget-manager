@@ -1,0 +1,32 @@
+/* src/pages/ReportsPage.css */
+.reports-container {
+    display: flex;
+  }
+  
+  .report-filters, .report-results {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+  }
+  
+  .report-filters h2, .report-results h2 {
+    margin-bottom: 1em;
+  }
+  
+  .report-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .report-table th, .report-table td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: left;
+  }
+  
+  .report-table th {
+    background-color: #f4f4f4;
+  }
+  

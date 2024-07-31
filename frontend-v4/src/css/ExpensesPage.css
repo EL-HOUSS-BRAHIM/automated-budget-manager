@@ -1,0 +1,30 @@
+/* src/pages/ExpensesPage.css */
+.expenses-container {
+    display: flex;
+  }
+  
+  .add-expense, .expense-list {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+  }
+  
+  .add-expense h2, .expense-list h2 {
+    margin-bottom: 1em;
+  }
+  
+  .expense-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .expense-list li {
+    background-color: #f9f9f9;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  

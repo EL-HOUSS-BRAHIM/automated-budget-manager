@@ -1,0 +1,16 @@
+/* src/pages/HomePage.css */
+.home-container {
+    text-align: center;
+    padding: 2em;
+  }
+  
+  .home-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .home-container p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+  
