@@ -56,3 +56,5 @@ WHERE user.email = %(email_1)s
 2024-07-31 15:14:18,933 INFO: Budget app startup [in D:\ALX\automated-budget-manager\backend-v2\app\__init__.py:48]
 2024-07-31 17:50:39,773 INFO: Budget app startup [in D:\ALX\automated-budget-manager\backend-v2\app\__init__.py:48]
 2024-07-31 17:50:59,554 INFO: Budget app startup [in D:\ALX\automated-budget-manager\backend-v2\app\__init__.py:48]
+2024-07-31 21:50:24,070 INFO: Budget app startup [in D:\ALX\automated-budget-manager\backend-v2\app\__init__.py:48]
+2024-07-31 21:50:28,788 INFO: Budget app startup [in D:\ALX\automated-budget-manager\backend-v2\app\__init__.py:48]

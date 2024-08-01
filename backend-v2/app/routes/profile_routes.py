@@ -8,8 +8,9 @@ from ..utils.validation_utils import validate_json
 @jwt_required()
 def get_user_profile():
     user_id = get_jwt_identity()
+    user_id_number = user_id
     profile = get_profile(user_id)
-    return jsonify(profile), 200
+    return jsonify(profile, user_id_number), 200
 
 @profile_bp.route('', methods=['PUT'])
 @jwt_required()
