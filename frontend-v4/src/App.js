@@ -1,41 +1,32 @@
+// src/router.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import Expenses from './pages/Expenses';
+import Budget from './pages/Budget';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
-import ErrorBoundary from './components/ErrorBoundary';
-import './App.css';
-import { useAuth } from './utils/auth';
+import Reports from './pages/Reports';
 
-const PrivateRoute = ({ children }) => {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? children : <Route to="/login" />;
-};
-
-function App() {
+function RouterConfig() {
   return (
-    <ErrorBoundary>
-      <div className="App">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-            <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </ErrorBoundary>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/expenses" element={<Expenses />} />
+        <Route path="/budget" element={<Budget />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/reports" element={<Reports />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App;
+export default RouterConfig;

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Budget Manager - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --background-color: #fff;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        /* Header styles */
+        header {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            transition: 0.3s;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .auth-buttons button {
+            padding: 0.5rem 1rem;
+            margin-left: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .register-btn {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .auth-buttons button:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            transition: 0.3s;
+        }
+
+        /* Main content styles */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            background-image: url('https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            margin-bottom: 3rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials {
+            margin-bottom: 3rem;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial {
+            text-align: center;
+        }
+
+        .testimonial img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .cta {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cta h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links a {
+            margin: 0 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .social-icons {
+            margin: 1rem 0;
+        }
+
+        .social-icon {
+            margin: 0 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+            }
+        }
+        /* New and updated styles */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --background-color: #fff;
+            --accent-color: #28a745;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonials-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .testimonial {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            background-color: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --text-color: #f4f4f4;
+            --background-color: #333;
+            --secondary-color: #444;
+        }
+
+        /* Animation for CTA button */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .cta-btn {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Budget Manager</div>
+        <nav>
+            <div class="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login-btn" aria-label="Login">Login</button>
+            <button class="register-btn" aria-label="Register">Register</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Manage Your Budget Efficiently</h1>
+                <p>Track expenses, set budgets, and achieve financial goals</p>
+                <button class="cta-btn">Get Started</button>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <i class="fas fa-chart-line fa-3x"></i>
+                    <h3>Track Expenses</h3>
+                    <p>Easily log and categorize your expenses</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-piggy-bank fa-3x"></i>
+                    <h3>Set Budgets</h3>
+                    <p>Create and manage budgets for different categories</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-pie fa-3x"></i>
+                    <h3>Visualize Data</h3>
+                    <p>View your financial data through intuitive charts</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>What Our Users Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/100" alt="User 1">
+                    <blockquote>"This app has completely changed how I manage my finances!"</blockquote>
+                    <p>- Jane Doe</p>
+                </div>
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/100" alt="User 2">
+                    <blockquote>"I've never been so organized with my money before!"</blockquote>
+                    <p>- John Smith</p>
+                </div>
+                <div class="testimonial">
+                    <img src="https://via.placeholder.com/100" alt="User 3">
+                    <blockquote>"The visualizations make it easy to understand my spending habits."</blockquote>
+                    <p>- Emily Johnson</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Ready to Take Control of Your Finances?</h2>
+            <button class="cta-btn">Join Now</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="contact-info">
+            <p>Contact: info@budgetmanager.com</p>
+        </div>
+        <p>&copy; 2024 Automatic Budget Manager. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.createElement('button');
+        darkModeToggle.textContent = 'Toggle Dark Mode';
+        darkModeToggle.style.position = 'fixed';
+        darkModeToggle.style.bottom = '20px';
+        darkModeToggle.style.right = '20px';
+        document.body.appendChild(darkModeToggle);
+
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

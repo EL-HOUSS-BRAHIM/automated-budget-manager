@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Automatic Budget Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #ecf0f1;
+            --text-color: #333;
+            --header-height: 60px;
+            --dark-bg: #2c3e50;
+            --dark-text: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .header {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+        
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav__list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav__item {
+            margin-right: 1rem;
+        }
+        
+        .nav__link {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .user-menu {
+            position: relative;
+        }
+        
+        .profile-icon {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown-menu__link {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .dropdown-menu__link:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .settings {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .settings__title {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .settings__form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .settings__item {
+            margin-bottom: 1rem;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .currency-selector__label {
+            margin-right: 0.5rem;
+        }
+        
+        .currency-selector__select {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        .settings__button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .settings__button:hover {
+            background-color: #2980b9;
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer__list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .footer__item {
+            margin: 0 1rem;
+        }
+        
+        .footer__link {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                height: auto;
+            }
+        
+            .nav__list {
+                margin-top: 1rem;
+            }
+        
+            .user-menu {
+                margin-top: 1rem;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo"><a href="index.html">ABM</a></div>
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="dashboard.html" class="nav__link">Dashboard</a></li>
+                <li class="nav__item"><a href="expenses.html" class="nav__link">Expenses</a></li>
+                <li class="nav__item"><a href="budgets.html" class="nav__link">Budgets</a></li>
+                <li class="nav__item"><a href="reports.html" class="nav__link">Reports</a></li>
+            </ul>
+        </nav>
+        <div class="user-menu">
+            <button class="profile-icon" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> Profile</button>
+            <div class="dropdown-menu" aria-label="Profile options">
+                <a href="profile.html" class="dropdown-menu__link">Profile</a>
+                <a href="settings.html" class="dropdown-menu__link">Settings</a>
+                <a href="logout.html" class="dropdown-menu__link">Logout</a>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="settings">
+            <h2 class="settings__title">Account Settings</h2>
+            <form id="settingsForm" class="settings__form">
+                <div class="settings__item">
+                    <label class="switch">
+                        <input type="checkbox" id="notificationsToggle">
+                        <span class="slider"></span>
+                        Enable notifications
+                    </label>
+                </div>
+                <div class="settings__item">
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                        Dark mode
+                    </label>
+                </div>
+                <div class="settings__item currency-selector">
+                    <label for="currency" class="currency-selector__label">Preferred Currency:</label>
+                    <select id="currency" name="currency" class="currency-selector__select">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="JPY">JPY (¥)</option>
+                    </select>
+                </div>
+                <button type="submit" class="settings__button">Save Settings</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <ul class="footer__list">
+            <li class="footer__item"><a href="privacy.html" class="footer__link">Privacy Policy</a></li>
+            <li class="footer__item"><a href="terms.html" class="footer__link">Terms of Service</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileIcon = document.querySelector('.profile-icon');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            const settingsForm = document.getElementById('settingsForm');
+            const notificationsToggle = document.getElementById('notificationsToggle');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const currencySelector = document.getElementById('currency');
+
+            // Toggle dropdown menu
+            profileIcon.addEventListener('click', function() {
+                const expanded = profileIcon.getAttribute('aria-expanded') === 'true';
+                profileIcon.setAttribute('aria-expanded', !expanded);
+                dropdownMenu.style.display = expanded ? 'none' : 'block';
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.user-menu')) {
+                    profileIcon.setAttribute('aria-expanded', 'false');
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+
+            // Load settings from local storage
+            const settings = JSON.parse(localStorage.getItem('settings')) || {};
+            notificationsToggle.checked = settings.notifications || false;
+            darkModeToggle.checked = settings.darkMode || false;
+            currencySelector.value = settings.currency || 'USD';
+
+            if (settings.darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Save settings to local storage
+            settingsForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const newSettings = {
+                    notifications: notificationsToggle.checked,
+                    darkMode: darkModeToggle.checked,
+                    currency: currencySelector.value
+                };
+                localStorage.setItem('settings', JSON.stringify(newSettings));
+                alert('Settings saved successfully!');
+
+                if (darkModeToggle.checked) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
